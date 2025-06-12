@@ -11,10 +11,9 @@ This toolkit is designed to automate the download of S2S hindcast data for a spe
 
 *   Retrieves all available hindcast data for a selected S2S model.
 *   Manages forecast runs scheduled on specific days of the month or specific days of the week.
-*   Handles both "fixed" model versions and "on-the-fly" hindcast strategy:
-    *   For "on-the-fly" models: Downloads hindcasts for a defined range of past years relative to a specified `model_version_year`.
-    *   For "fixed" models: Directly downloads the complete set of available hindcasts.
-*   Retrieves data for the maximum available forecast lead time and all available ensemble members for hindcasts.
+*   Handles both "fixed" model versions and "on-the-fly" hindcast strategy.
+*   Retrieves data for the maximum available forecast lead time and all available ensemble members.
+*   Supports downloading both hindcast and real‐time data out of the box.
 
 ## Usage Instructions
 
@@ -28,25 +27,24 @@ This toolkit is designed to automate the download of S2S hindcast data for a spe
 
 Before running the main script (`retrieve.py`), you will likely need to adjust parameters in the following files:
 
-*   **`retrieve.py`**:
+*   **`basic_info.py`**:
     *   `origin`: Set the identifier for the desired S2S model (e.g., `"ecmf"`).
     *   `fdir_root`: Specify the root directory where the downloaded data will be saved.
     *   `order["area"]`: Define the geographical extent for data retrieval (format: North/West/South/East).
+    *   `model_version_year`: For models using the "on-the-fly" strategy, set this variable. It typically corresponds to the year for which the hindcast set is defined (e.g., using the previous year is a common practice).
+    *   `var_name_list`: Customize the list of meteorological variables to be downloaded.
 
 *   **`var_info.py`**:
-    *   `var_name_list`: Customize the list of meteorological variables to be downloaded.
     *   `grib_code`: If adding new variables not already defined, ensure their GRIB codes are included.
     *   other key values in a similar way
 
-*   **`origin_info.py`**:
-    *   `model_version_year`: For models using the "on-the-fly" strategy, set this variable. It typically corresponds to the year for which the hindcast set is defined (e.g., using the previous year is a common practice).
-
-### 3. Running the Script
-
-Execute the `retrieve.py` script to begin the download process.
+## What's New in This Update
+*   Downloads both hindcast and real‐time datasets.
+*   Compatible with operational strategy switches **mid‐year** (mixed‐strategy support).
+*   Handles missing step0 data, leap‐day fallback and other edge cases for improved “plug‐and‐play” experience.
 
 ## Note
 
-This toolkit was developed in 2022. The operational strategies and data availability for S2S models can change over time. If you encounter issues, it's advisable to check the latest documentation for the specific S2S model you are interested in. Contributions and suggestions for updates are welcome.
-
-This README was language-polished by Gemini 2.5 Pro, and all generated content has been reviewed, corrected and confirmed by the author.
+This toolkit was developed in 2022 and has been continuously updated.  
+The operational strategies and data availability for S2S models have evolved since then.  
+If you encounter issues, it's advisable to check the latest documentation for the specific S2S model you are interested in.
