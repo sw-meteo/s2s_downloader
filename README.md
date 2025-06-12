@@ -1,19 +1,18 @@
-# S2S Hindcast Data Download Toolkit
+# S2S Data Download Toolkit
 
 ## Overview
 
-The Subseasonal-to-Seasonal (S2S) Prediction Project provides hindcast data from numerous global modeling centers via ECMWF, offering a convenient download interface and a relatively standardized data format. However, the diverse forecast run schedules (e.g., varying start dates based on day of week/month, fixed vs. on-the-fly model versions) can complicate multi-model research. 
+The Subseasonal-to-Seasonal (S2S) Prediction Project provides realtime forecast / hindcast data from numerous global modeling centers via ECMWF, offering a convenient download interface and a relatively standardized data format. However, the diverse forecast run schedules (e.g., varying start dates based on day of week/month, fixed vs. on-the-fly model versions) can complicate multi-model research. 
 It is particularly suitable for beginners who are not very familiar with meteorological data but need it to build data-driven models.
 
 This toolkit is designed to automate the download of S2S hindcast data for a specified model from the ECMWF S2S database.
 
 ## Key Features
 
-*   Retrieves all available hindcast data for a selected S2S model.
+*   Retrieves all available hindcast data (or on selected years) for a selected S2S model.
 *   Manages forecast runs scheduled on specific days of the month or specific days of the week.
 *   Handles both "fixed" model versions and "on-the-fly" hindcast strategy.
 *   Retrieves data for the maximum available forecast lead time and all available ensemble members.
-*   Supports downloading both hindcast and real‐time data out of the box.
 
 ## Usage Instructions
 
