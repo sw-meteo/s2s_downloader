@@ -1,31 +1,15 @@
-'''
-download realtime data
-no need for hdate, only date
-'''
 import os
 from origin_info import pf_member_rltm
-from var_info import grib_code, level_required, var_name_list
+from var_info import grib_code
+from basic_info import origin, fdir_root, basic_order, level_required, var_name_list
 from order_handler import get_all_valid_mvd, get_all_valid_hdate, get_lead_str, get_var_list
 from ecmwfapi import ECMWFDataServer
 server = ECMWFDataServer()
 
 
-'''
-basic info
-'''
-origin = "ecmf"
-fdir_root = "/data/sw/buffer/s2s.2020/data"
-
-order = {"class": "s2",      "dataset": "s2s",   "expver": "prod", 
-         "model": "glob",    "origin": origin,   "grid": "1.5/1.5",  
-         "stream": "enfh",   "time": "00:00:00", "format": "netcdf",       
-}
-
-
-'''
-retrieve data
-'''
 if __name__ == "__main__":
+    order = basic_order
+    
     print(f"Downloading data from {origin}")
     for ensemble_type in ["cf", "pf"]:
         print(f"retrieving {ensemble_type}")
@@ -62,4 +46,3 @@ if __name__ == "__main__":
                         order["levelist"] = '/'.join([str(lv) for lv in (level_required[var_name])])
                     
                     server.retrieve(order)
-
