@@ -1,5 +1,5 @@
 import os
-from origin_info import pf_member_rltm
+from origin_info import pf_member_hind
 from var_info import grib_code
 from basic_info import origin, fdir_root, basic_order, level_required, var_name_list
 from order_handler import get_all_valid_mvd, get_all_valid_hdate, get_lead_str, get_var_list
@@ -15,7 +15,7 @@ if __name__ == "__main__":
         print(f"retrieving {ensemble_type}")
         order["type"] = ensemble_type
         if ensemble_type == "pf":
-            order["number"] = f"1/to/{pf_member_rltm[origin]}"
+            order["number"] = f"1/to/{pf_member_hind[origin]}"
         
         mvd_list = list(get_all_valid_mvd(origin))
         for mvd in mvd_list:
